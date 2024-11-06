@@ -10,7 +10,7 @@ export const Provider = ({ children }: { children: React.ReactNode }) => {
 
   return (
     // <TonConnectUIProvider manifestUrl="https://github.com/ton-community/tutorials/blob/main/03-client/test/public/tonconnect-manifest.json">
-    <TonConnectUIProvider manifestUrl="http://localhost:3000/tonconnect-manifest.json">
+    <TonConnectUIProvider manifestUrl="https://github.com/akicool/next-ton-connect/blob/main/public/tonconnect-manifest.json">
       {children}
     </TonConnectUIProvider>
   );
