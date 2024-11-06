@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ["tonkeeper.com"],
+    domains: ["tonkeeper.com", "static.mytonwallet.io"],
   },
 };
 
