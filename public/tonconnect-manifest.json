@@ -1,5 +1,5 @@
 {
-  "url": "http://localhost:3000",
+  "url": "https://github.com/akicool/next-ton-connect/blob/main/public/tonconnect-manifest.json",
   "name": "next-ton-connect",
   "iconUrl": "https://tonkeeper.com/assets/tonconnect-icon.png",
   "termsOfUseUrl": "<terms-of-use-url>",
