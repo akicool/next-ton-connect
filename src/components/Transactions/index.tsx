@@ -1,4 +1,5 @@
 "use client";
+import { IconPlugConnectedX } from "@tabler/icons-react";
 import {
   SendTransactionRequest,
   useTonConnectUI,
@@ -10,6 +11,7 @@ type Props = {};
 
 export const Transactions = (props: Props) => {
   const [tonConnectUI] = useTonConnectUI();
+  const wallet = useTonWallet();
 
   const [address, setAddress] = useState<string>("");
   const [amount, setAmount] = useState<string>("");
@@ -53,27 +55,34 @@ export const Transactions = (props: Props) => {
       <h1 className="h-[10%] text-3xl mb-10">Transactions Page</h1>
 
       <div className=" w-full h-[80%] grid place-items-center">
-        <div className=" flex flex-col gap-2 items-center max-w-96 w-full">
-          <input
-            type="text"
-            value={address}
-            onChange={handleChangeAddress}
-            placeholder="Address"
-            className="text-black w-full"
-          />
+        {wallet ? (
+          <div className=" flex flex-col gap-2 items-center max-w-96 w-full">
+            <input
+              type="text"
+              value={address}
+              onChange={handleChangeAddress}
+              placeholder="Address"
+              className="text-black w-full"
+            />
 
-          <input
-            type="text"
-            value={amount}
-            onChange={handleChangeAmount}
-            placeholder="Amount"
-            className="text-black w-full"
-          />
+            <input
+              type="text"
+              value={amount}
+              onChange={handleChangeAmount}
+              placeholder="Amount"
+              className="text-black w-full"
+            />
 
-          <button onClick={() => tonConnectUI.sendTransaction(transaction)}>
-            Send transaction
-          </button>
-        </div>
+            <button onClick={() => tonConnectUI?.sendTransaction(transaction)}>
+              Send transaction
+            </button>
+          </div>
+        ) : (
+          <div className="text-3xl flex gap-2 items-center">
+            <h1>Connect Wallet Please</h1>
+            <IconPlugConnectedX />
+          </div>
+        )}
       </div>
     </div>
   );

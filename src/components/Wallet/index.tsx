@@ -6,7 +6,6 @@ import React, { useEffect, useState } from "react";
 type Props = {};
 
 export const Wallet = (props: Props) => {
-  const wallet = useTonWallet();
   const address = useTonAddress();
 
   return (
