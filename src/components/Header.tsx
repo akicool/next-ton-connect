@@ -58,28 +58,24 @@ export const Header = () => {
         </Link>
       )}
 
-      {address ? (
-        <div className="flex w-full justify-between items-center">
-          <div className="flex items-center gap-3">
-            <p>Balance: {parseFloat(balance as string) / 1e9} TON</p>
-            <button onClick={() => setUpdateBalance(!updateBalance)}>
-              <IconReload />
-            </button>
-          </div>
-
-          <div className="flex items-center gap-4">
-            <Image
-              src={(wallet as any)?.imageUrl}
-              alt="tonkeeper"
-              width={32}
-              height={32}
-            />
-            <TonConnectButton />
-          </div>
+      <div className="flex w-full justify-between items-center">
+        <div className="flex items-center gap-3">
+          <p>Balance: {parseFloat(balance as string) / 1e9} TON</p>
+          <button onClick={() => setUpdateBalance(!updateBalance)}>
+            <IconReload />
+          </button>
         </div>
-      ) : (
-        <TonConnectButton />
-      )}
+
+        <div className="flex items-center gap-4">
+          <Image
+            src={(wallet as any)?.imageUrl}
+            alt="tonkeeper"
+            width={32}
+            height={32}
+          />
+          <TonConnectButton />
+        </div>
+      </div>
     </header>
   );
 };
