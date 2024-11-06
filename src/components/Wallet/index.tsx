@@ -9,12 +9,10 @@ export const Wallet = (props: Props) => {
   const wallet = useTonWallet();
   const address = useTonAddress();
 
-  console.log(wallet, address);
-
   return (
     <div>
       <h1 className=" text-3xl mb-10">Wallet Page</h1>
-      {address && <p>Address: {address}</p>}
+      {address && <p>Your address: {address}</p>}
 
       <Link
         href={{ pathname: "/transactions", query: { page: "transactions" } }}

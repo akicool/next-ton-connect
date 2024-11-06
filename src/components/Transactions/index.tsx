@@ -50,7 +50,7 @@ export const Transactions = (props: Props) => {
 
   return (
     <div className=" h-[90%]">
-      <h1 className="h-[10%] text-3xl mb-10">Transaction Page</h1>
+      <h1 className="h-[10%] text-3xl mb-10">Transactions Page</h1>
 
       <div className=" w-full h-[80%] grid place-items-center">
         <div className=" flex flex-col gap-2 items-center max-w-96 w-full">

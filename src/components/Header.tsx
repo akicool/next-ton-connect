@@ -10,7 +10,7 @@ import {
   useTonAddress,
   useTonWallet,
 } from "@tonconnect/ui-react";
-import { IconArrowBackUp } from "@tabler/icons-react";
+import { IconArrowBackUp, IconReload } from "@tabler/icons-react";
 
 const getBalance = async (address: string) => {
   const res = await fetch(
@@ -31,6 +31,7 @@ export const Header = () => {
   const page = searchParams.get("page");
   const isTransactionsPage = page === "transactions";
   const [balance, setBalance] = useState<string | number>(0);
+  const [updateBalance, setUpdateBalance] = useState(false);
 
   const wallet = useTonWallet();
   const address = useTonAddress();
@@ -42,7 +43,7 @@ export const Header = () => {
         setBalance(info?.result?.balance);
       }
     })();
-  }, [wallet?.account?.address]);
+  }, [wallet?.account?.address, updateBalance]);
 
   return (
     <header
@@ -59,7 +60,12 @@ export const Header = () => {
 
       {address ? (
         <div className="flex w-full justify-between items-center">
-          <p>Balance: {parseFloat(balance as string) / 1e9} TON</p>
+          <div className="flex items-center gap-3">
+            <p>Balance: {parseFloat(balance as string) / 1e9} TON</p>
+            <button onClick={() => setUpdateBalance(!updateBalance)}>
+              <IconReload />
+            </button>
+          </div>
 
           <div className="flex items-center gap-4">
             <Image

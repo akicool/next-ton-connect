@@ -1,36 +1,26 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## Как развернуть проект
 
-## Getting Started
+![Скопируйте URL проекта из "Code -> HTTPS"](image.png)
 
-First, run the development server:
+> - Перейдите в редактор кода и в терминале: git clone <your_copied_link>
+> - Перейдите в директорию проекта и в терминал введите: npm i
+> - После установки пакетов зависимостей введите в терминал: npm run dev
+> - Перейдите по ссылке: http://localhost:3000
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Как пополнить кошелек
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+![Вас встретит следующая страница](image-1.png)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+> - Нажмите на Connect Wallet
+> - ![Откроется модальное окно](image-2.png)
+> - Выберите Tonkeeper
+> - Отсканируйте QR-код из приложения Tonkeeper
+> - В приложении нажмите "Connect wallet" и введите пароль
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+![Перейдите на страницу Transactions для отправки средств на кошелек](image-3.png)
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+> - ![Страница Transactions](image-4.png)
+> - Первое поле - для ввода адреса, куда будем отправлять средства
+> - Второе поле - для ввода количества средств (в нанотонах)
+> - Отправляем средства по кнопке "Send transaction"
+> - После обновите баланс
