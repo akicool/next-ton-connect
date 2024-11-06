@@ -1,19 +1,79 @@
 "use client";
-import { TonConnectButton, useTonConnectUI } from "@tonconnect/ui-react";
-import React from "react";
+import clsx from "clsx";
+import React, { useEffect, useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 
-type Props = {};
+import {
+  TonConnectButton,
+  useTonAddress,
+  useTonWallet,
+} from "@tonconnect/ui-react";
+import { IconArrowBackUp } from "@tabler/icons-react";
 
-export const Header = (props: Props) => {
-  const [tonConnectUI, setOptions] = useTonConnectUI();
-  const balance = 0;
+const getBalance = async (address: string) => {
+  const res = await fetch(
+    `https://testnet.toncenter.com/api/v2/getAddressInformation?address=${address}`
+  )
+    .then((response) => {
+      return response.json();
+    })
+    .catch((error) => {
+      console.error("Ошибка получения баланса", error);
+    });
+
+  return res;
+};
+
+export const Header = () => {
+  const searchParams = useSearchParams();
+  const page = searchParams.get("page");
+  const isTransactionsPage = page === "transactions";
+  const [balance, setBalance] = useState<string | number>(0);
+
+  const wallet = useTonWallet();
+  const address = useTonAddress();
+
+  useEffect(() => {
+    (async () => {
+      if (wallet?.account?.address) {
+        const info = await getBalance(wallet?.account?.address);
+        setBalance(info?.result?.balance);
+      }
+    })();
+  }, [wallet?.account?.address]);
+
   return (
-    <header className="flex items-center justify-between w-full py-3 gap-4">
-      <div>
-        <p>Balance: {balance} TON</p>
-      </div>
-      {/* <button onClick={() => tonConnectUI.openModal()}>Connect Wallet</button> */}
-      <button onClick={() => tonConnectUI.openSingleWalletModal('tonkeeper')}>Connect Wallet</button>
+    <header
+      className={clsx(
+        "flex items-center w-full py-3 gap-4 h-[10%]",
+        isTransactionsPage ? "justify-between" : "justify-end"
+      )}
+    >
+      {isTransactionsPage && (
+        <Link href="/wallet">
+          <IconArrowBackUp />
+        </Link>
+      )}
+
+      {address ? (
+        <div className="flex w-full justify-between items-center">
+          <p>Balance: {parseFloat(balance as string) / 1e9} TON</p>
+
+          <div className="flex items-center gap-4">
+            <Image
+              src={(wallet as any)?.imageUrl}
+              alt="tonkeeper"
+              width={32}
+              height={32}
+            />
+            <TonConnectButton />
+          </div>
+        </div>
+      ) : (
+        <TonConnectButton />
+      )}
     </header>
   );
 };

@@ -9,8 +9,8 @@ export const Provider = ({ children }: { children: React.ReactNode }) => {
   console.log(ManifestURL);
 
   return (
-    // <TonConnectUIProvider manifestUrl="https://github.com/ton-community/tutorials/blob/main/03-client/test/public/tonconnect-manifest.json">
-    <TonConnectUIProvider manifestUrl="https://github.com/akicool/next-ton-connect/blob/main/public/tonconnect-manifest.json">
+    // <TonConnectUIProvider manifestUrl="https://github.com/akicool/next-ton-connect/blob/main/public/tonconnect-manifest.json">
+    <TonConnectUIProvider manifestUrl="https://akicool.github.io/next-ton-connect/public/tonconnect-manifest.json">
       {children}
     </TonConnectUIProvider>
   );
